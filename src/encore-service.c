@@ -98,19 +98,13 @@ int main(void) {
   perf_common();
 
   while (1) {
-    if (!gamestart) {
-      gamestart =
+    gamestart =
           execute_command("sh /data/encore/AppMonitoringUtil.sh | head -n 1");
-    } else {
-      snprintf(path, sizeof(path), "/proc/%s", trim_newline(pid));
-      if (access(path, F_OK) == -1) {
-        free(pid);
-        pid = NULL;
-        free(gamestart);
-        gamestart = NULL;
-        gamestart =
-            execute_command("sh /data/encore/AppMonitoringUtil.sh | head -n 1");
-      }
+    if (trim_newline(gamestart) == NULL) {
+      free(pid);
+      pid = NULL;
+      free(gamestart);
+      gamestart = NULL;
     }
 
     screenstate = execute_command(
