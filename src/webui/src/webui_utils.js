@@ -53,6 +53,12 @@ async function restartService() {
   await getServicePID();
 }
 
+async function killService() {
+  await exec('encore-utils kill_service');
+  await getServiceState();
+  await getServicePID();
+}
+
 async function changeCPUGovernor(governor) {
   const command = 'encore-utils set_default_cpugov ' + governor;
   await exec(command);
@@ -140,6 +146,10 @@ document.addEventListener('DOMContentLoaded', async (event) => {
 
   document.getElementById('restartServiceButton').addEventListener('click', async function() {
     await restartService();
+  });
+
+  document.getElementById('killServiceButton').addEventListener('click', async function() {
+    await killService();
   });
 
   document.getElementById('killLogdSwitch').addEventListener('change', async function() {

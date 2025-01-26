@@ -92,6 +92,10 @@ restart_service() {
 	su -c "encore-service" </dev/null >/dev/null 2>&1 &
 }
 
+kill_service() {
+	pkill encore-service
+}
+
 get_gamelist() {
 	cat /data/encore/gamelist.txt
 }
