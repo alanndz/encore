@@ -232,8 +232,7 @@ void powersave_mode(void) {
  ***********************************************************************************/
 char *get_gamestart(void) {
   return execute_command(
-      "dumpsys window visible-apps | grep 'package=.* ' | grep -Eo "
-      "$(cat /data/encore/gamelist.txt)");
+      "dumpsys window visible-apps | grep 'package=.* ' | grep -f /data/encore/gamelist.txt");
 }
 
 /***********************************************************************************

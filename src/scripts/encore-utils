@@ -97,7 +97,7 @@ get_gamelist() {
 }
 
 save_gamelist() {
-	echo "$1" | tr '/' '|' >/data/encore/gamelist.txt
+	echo "$1" | tr '/' '\n' >/data/encore/gamelist.txt
 }
 
 open_website() {

@@ -110,7 +110,7 @@ async function openGamelistModal() {
 
   const { errno, stdout } = await exec('encore-utils get_gamelist');
   if (errno === 0) {
-    input.value = stdout.trim().replace(/\|/g, '\n');
+    input.value = stdout.trim();
   }
 
   modal.classList.remove('hidden');
