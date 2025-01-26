@@ -348,8 +348,7 @@ int main(void) {
     if (screenstate == NULL) {
       log_encore("error: failed to get current screenstate, service won't work properly!");
     } else if (gamestart && (strcmp(trim_newline(screenstate), "Awake") == 0 ||
-                             strcmp(trim_newline(screenstate), "true") == 0) &&
-                             mlbb_is_running != 1) {
+                             strcmp(trim_newline(screenstate), "true") == 0)) {
       // Apply performance mode
       if (cur_mode != 1) {
         snprintf(command, sizeof(command), "pidof %s", trim_newline(gamestart));
@@ -358,10 +357,12 @@ int main(void) {
         // Handle weird behavior of MLBB
         if (mlbb_is_running == 2) {
           pid = execute_command("pidof com.mobile.legends:UnityKillsMe");
-          log_encore("info: boosting com.mobile.legends:UnityKillsMe thread");
+          log_encore("info: MLBB detected, boosting UnityKillsMe thread");
+        } else if (mlbb_is_running == 1) {
+          log_encore("info: MLBB detected but UnityKillsMe thread is not running");
         }
 
-        if (pid != NULL) {
+        if (pid != NULL && mlbb_is_running != 1) {
           cur_mode = 1;
           log_encore("info: applying performance profile for %s",
                      trim_newline(gamestart));
