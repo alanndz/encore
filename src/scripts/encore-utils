@@ -1,5 +1,7 @@
 #!/system/bin/sh
 
+backup_dir="/data/encore/backup_value"
+
 get_module_version() {
 	grep "version=" /data/adb/modules/encore/module.prop | awk -F'=' '{print $2}'
 }
@@ -106,6 +108,19 @@ save_gamelist() {
 
 open_website() {
 	/system/bin/am start -a android.intent.action.VIEW -d "https://encore.rem01gaming.dev/"
+}
+
+backup_value() {
+	for file in $@
+	do
+		echo "$file $(cat $file)" >> ${backup_dir}
+	done
+}
+
+restore_value() {
+	while read -r file value; do
+		echo "$value" > "$file"
+	done < ${backup_dir}
 }
 
 save_logs() {

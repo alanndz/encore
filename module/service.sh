@@ -11,6 +11,10 @@ echo $default_gov >/data/encore/default_cpu_gov
 rm -f /data/encore/encore_log
 touch /data/encore/encore_log
 
+> /data/encore/backup_value
+
+encore-utils backup_value /sys/devices/system/cpu/cpufreq/policy*/schedutil/*
+
 encore-service
 code=$?
 if [ $code -gt 0 ] && [ ! $code -eq 143 ]; then

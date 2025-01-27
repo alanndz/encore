@@ -76,6 +76,9 @@ for path in /sys/devices/system/cpu/cpufreq/policy*; do
 done &
 apply 1 /sys/devices/system/cpu/cpu1/online
 
+# Restore default value
+encore-utils restore_value
+
 if [ -d /proc/ppm ]; then
 	cluster=0
 	for path in /sys/devices/system/cpu/cpufreq/policy*; do
