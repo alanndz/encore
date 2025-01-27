@@ -46,7 +46,7 @@ unzip -o "$ZIPFILE" "webroot/*" -d "$MODPATH" >&2
 ui_print "- Encore Tweaks configuration setup"
 [ ! -d /data/encore ] && mkdir /data/encore
 extract "$ZIPFILE" 'encore_logo.png' "/data/local/tmp"
-unzip -o "$ZIPFILE" 'gamelist.txt' -d "/data/encore" >&2
+[ ! -f /data/encore/gamelist.txt ] && unzip -o "$ZIPFILE" 'gamelist.txt' -d "/data/encore" >&2
 [ ! -f /data/encore/kill_logd ] && echo 0 >/data/encore/kill_logd
 
 # Bellavita Toast
