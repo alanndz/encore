@@ -1,0 +1,37 @@
+@import "tailwindcss";
+
+.content {
+	display: flex;
+	justify-content: space-between;
+	align-items: center;
+}
+
+.floating-card {
+	position: fixed;
+	bottom: 15px;
+	right: 15px;
+	float: right;
+	z-index: 3;
+}
+
+.checkbox {
+	margin-left: auto;
+}
+
+.floating-btn {
+	border-radius: 24px;
+	font-size: 10px;
+	background-color: #007bff;
+	color: white;
+	border: none;
+	width: auto;
+	height: auto;
+	font-size: 18px;
+	padding: 10px 20px;
+	cursor: pointer;
+	box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+	transition: transform 0.3s ease-in-out;
+	display: flex;
+	justify-content: center;
+	align-items: center;
+}

@@ -1,0 +1,33 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <link rel="icon" type="image/svg+xml" href="/vite.svg" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Vite App</title>
+    <link href="/dist/styles.css" rel="stylesheet">
+    <script type="module" src="/src/main.js"></script>
+  </head>
+  <body class="bg-background text-onBackground">
+    <div class="p-4">
+        <div class="card p-4 bg-surface shadow-lg rounded-2xl">
+            <input type="text" class="search-input w-full p-2 border border-outline rounded-lg bg-surfaceVariant text-onSurface" id="search" placeholder="Search">
+        </div>
+    </div>
+
+    <div id="apps-list" class="p-4 grid gap-4"></div>
+
+    <div class="floating-card fixed bottom-4 right-4">
+        <button class="floating-btn bg-primary text-onPrimary p-4 rounded-full shadow-lg" id="saveButton">Save</button>
+    </div>
+
+    <template id="app-template">
+        <div class="card p-4 bg-surface shadow-md rounded-2xl">
+            <div class="content flex justify-between items-center">
+                <p class="name text-onSurface"></p>
+                <input type="checkbox" class="checkbox accent-primary">
+            </div>
+        </div>
+    </template>
+  </body>
+</html>
