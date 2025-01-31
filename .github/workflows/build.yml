@@ -35,7 +35,7 @@ jobs:
       run: |
         npm install
         npm run build
-        cp ./dist/* ../../module/webroot
+        cp -r ./dist/* ../../module/webroot
     - name: Compile flashable zip
       id: compileZip
       run: bash .github/scripts/compile_zip.sh
